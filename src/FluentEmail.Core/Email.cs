@@ -461,7 +461,7 @@ namespace FluentEmail.Core
 
         public IFluentEmail AttachFromFilename(string filename,  string contentType = null, string attachmentName = null)
         {
-            var stream = File.OpenRead(filename);
+            using var stream = File.OpenRead(filename);
             Attach(new Attachment
             {
                 Data = stream,
